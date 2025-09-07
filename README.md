@@ -229,6 +229,6 @@ If you encounter any issues or have questions:
 
 ---
 
-**Made with ❤️ for the AI community**
+**Made with @Bangkah for the AI community**
 
 *Kerokero AI - Your friendly local AI assistant* 🐸
