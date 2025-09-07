@@ -50,7 +50,7 @@ A beautiful, modern ChatGPT-style interface for interacting with local AI models
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/kerokero-ai.git
+   git clone https://github.com/Bangkah/kerokero-ai.git
    cd kerokero-ai
    ```
 
