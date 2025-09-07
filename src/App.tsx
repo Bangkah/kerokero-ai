@@ -132,7 +132,7 @@ function App() {
       console.error('Error sending message:', err);
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
-        content: 'Sorry, there was an error processing your message. Please try again.',
+        content: 'Sorry bro, permintaanmu belum dapat di proses. Coba lagi nanti ya!',
         role: 'assistant',
         timestamp: new Date(),
         model: selectedModel,
