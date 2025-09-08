@@ -6,11 +6,10 @@ export interface Message {
   model?: string;
 }
 
-export interface OllamaModel {
+export interface AIModel {
   name: string;
-  size: number;
-  digest: string;
-  modified_at: string;
+  id: string;
+  description?: string;
 }
 
 export interface ChatRequest {
@@ -19,5 +18,6 @@ export interface ChatRequest {
     role: 'user' | 'assistant';
     content: string;
   }>;
-  stream: boolean;
+  max_tokens?: number;
+  temperature?: number;
 }

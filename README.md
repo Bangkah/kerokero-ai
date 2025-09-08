@@ -1,50 +1,29 @@
 # 🐸 Kerokero AI
 
-A beautiful, modern ChatGPT-style interface for interacting with local AI models using Ollama. Built with React, TypeScript, and Tailwind CSS.
+A beautiful, modern ChatGPT-style interface for interacting with AI models using Groq API. Built with React, TypeScript, and Tailwind CSS.
 
 ![Kerokero AI Screenshot](https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=400&fit=crop&crop=center)
 
 ## ✨ Features
 
 - **ChatGPT-style Interface** - Clean, modern design inspired by ChatGPT
-- **Local AI Models** - Powered by Ollama for privacy and offline usage
+- **Online AI Models** - Powered by Groq API for fast responses
 - **Multiple Conversations** - Create and manage multiple chat sessions
 - **Model Selection** - Switch between different AI models easily
 - **Real-time Chat** - Smooth, responsive messaging experience
 - **Conversation History** - Automatic saving of chat sessions
 - **Copy Messages** - Easy copying of AI responses
 - **Responsive Design** - Works perfectly on desktop, tablet, and mobile
-- **Privacy First** - All conversations stay on your local machine
+- **Cross-Platform** - Works on any device with internet connection
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
-1. **Install Ollama**
-   ```bash
-   # Visit https://ollama.ai and download for your OS
-   # Or use package managers:
-   
-   # macOS
-   brew install ollama
-   
-   # Linux
-   curl -fsSL https://ollama.ai/install.sh | sh
-   ```
-
-2. **Start Ollama Server**
-   ```bash
-   ollama serve
-   ```
-
-3. **Download AI Models**
-   ```bash
-   # Popular models to get started:
-   ollama pull llama2          # General purpose (3.8GB)
-   ollama pull mistral         # Fast and efficient (4.1GB)
-   ollama pull codellama       # Code assistant (3.8GB)
-   ollama pull llama2:13b      # Larger, more capable (7.3GB)
-   ```
+1. **Get Groq API Key**
+   - Visit [console.groq.com](https://console.groq.com)
+   - Sign up for a free account
+   - Create an API key in the dashboard
 
 ### Installation
 
@@ -59,16 +38,12 @@ A beautiful, modern ChatGPT-style interface for interacting with local AI models
    npm install
    ```
 
-3. **Configure CORS (Important!)**
+3. **Configure API Key**
    
-   For security reasons, you need to allow CORS for the web interface:
-   ```bash
-   # Set environment variable before starting Ollama
-   export OLLAMA_ORIGINS="http://localhost:5173,http://localhost:3000"
-   ollama serve
-   
-   # Or start with the variable inline
-   OLLAMA_ORIGINS="http://localhost:5173" ollama serve
+   Create a `.env` file in the root directory and add your Groq API key:
+   ```env
+   VITE_GROQ_API_KEY=your_groq_api_key_here
+   VITE_API_BASE_URL=https://api.groq.com/openai/v1
    ```
 
 4. **Start the development server**
@@ -94,10 +69,11 @@ A beautiful, modern ChatGPT-style interface for interacting with local AI models
 - **Auto-save**: Conversations are automatically saved locally
 
 ### Model Selection
-- Choose different models for different tasks
-- Code-related queries: Use `codellama`
-- General chat: Use `llama2` or `mistral`
-- Complex reasoning: Use larger models like `llama2:13b`
+Available models:
+- **Llama 3 8B**: Fast and efficient for general tasks
+- **Llama 3 70B**: More capable, better for complex tasks  
+- **Mixtral 8x7B**: Great for coding and analysis
+- **Gemma 7B**: Google's efficient model
 
 ## 🛠️ Development
 
@@ -106,7 +82,7 @@ A beautiful, modern ChatGPT-style interface for interacting with local AI models
 - **Styling**: Tailwind CSS
 - **Icons**: Lucide React
 - **Build Tool**: Vite
-- **AI Backend**: Ollama
+- **AI Backend**: Groq API
 
 ### Project Structure
 ```
@@ -119,7 +95,7 @@ src/
 │   ├── TypingIndicator.tsx # Loading animation
 │   └── EmptyState.tsx  # Welcome screen
 ├── hooks/
-│   └── useOllama.ts    # Ollama API integration
+│   └── useGroqAPI.ts   # Groq API integration
 ├── types/
 │   └── chat.ts         # TypeScript type definitions
 └── App.tsx             # Main application component
@@ -138,17 +114,14 @@ npm run lint         # Run ESLint
 ### Environment Variables
 Create a `.env` file in the root directory:
 ```env
-VITE_OLLAMA_BASE_URL=http://localhost:11434
+VITE_GROQ_API_KEY=your_groq_api_key_here
+VITE_API_BASE_URL=https://api.groq.com/openai/v1
 ```
 
-### Ollama Configuration
-You can customize Ollama settings by creating a `~/.ollama/config.json`:
-```json
-{
-  "origins": ["http://localhost:5173", "http://localhost:3000"],
-  "models_path": "/path/to/your/models"
-}
-```
+### API Configuration
+- Get your free API key from [Groq Console](https://console.groq.com)
+- The free tier includes generous usage limits
+- No credit card required for getting started
 
 ## 📱 Deployment
 
@@ -165,35 +138,36 @@ The built files in `dist/` can be deployed to any static hosting service:
 - AWS S3
 - Firebase Hosting
 
-**Note**: Make sure your Ollama server is accessible from your deployment environment.
+**Note**: Make sure to set your environment variables in your hosting platform.
 
 ## 🐛 Troubleshooting
 
 ### Common Issues
 
-**1. "Connection Failed" Error**
-- Ensure Ollama is running: `ollama serve`
-- Check if Ollama is accessible: `curl http://localhost:11434/api/version`
-- Verify CORS settings are configured
+**1. "API Key Required" Error**
+- Make sure you have a valid Groq API key
+- Check that the key is properly set in your `.env` file
+- Verify the key has the correct permissions
 
-**2. "No Models Available"**
-- Download at least one model: `ollama pull llama2`
-- Check available models: `ollama list`
+**2. "Connection Failed" Error**
+- Check your internet connection
+- Verify the API endpoint is correct
+- Make sure your API key is not expired
 
-**3. CORS Errors**
-- Set OLLAMA_ORIGINS environment variable
-- Restart Ollama server after setting the variable
+**3. "Rate Limited" Error**
+- You've exceeded the free tier limits
+- Wait for the rate limit to reset
+- Consider upgrading your Groq plan
 
 **4. Slow Responses**
-- Use smaller models like `mistral` for faster responses
-- Ensure sufficient RAM (8GB+ recommended for most models)
-- Close other resource-intensive applications
+- Try using smaller models like Llama 3 8B
+- Check your internet connection speed
+- Groq API is generally very fast
 
 ### Performance Tips
-- **RAM Usage**: Models require significant RAM (4-8GB per model)
-- **CPU**: Modern multi-core processors recommended
-- **Storage**: Models range from 2-20GB each
-- **GPU**: NVIDIA GPUs can accelerate inference (optional)
+- **Internet**: Stable internet connection recommended
+- **Model Choice**: Smaller models respond faster
+- **Caching**: Conversations are cached locally for better UX
 
 ## 🤝 Contributing
 
@@ -213,7 +187,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- [Ollama](https://ollama.ai) - For making local AI accessible
+- [Groq](https://groq.com) - For providing fast AI inference
 - [OpenAI](https://openai.com) - For ChatGPT interface inspiration
 - [Tailwind CSS](https://tailwindcss.com) - For the beautiful styling system
 - [Lucide](https://lucide.dev) - For the clean, consistent icons

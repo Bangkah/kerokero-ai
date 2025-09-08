@@ -14,16 +14,16 @@ export const EmptyState: React.FC<EmptyStateProps> = ({ isConnected, hasModels }
           <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <AlertCircle className="h-8 w-8 text-red-500" />
           </div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-3">Connection Failed</h3>
+          <h3 className="text-xl font-semibold text-gray-900 mb-3">API Key Required</h3>
           <p className="text-gray-600 mb-6">
-            Unable to connect to Ollama. Make sure Ollama is running on localhost:11434
+            Groq API key belum diatur. Dapatkan API key gratis dari Groq.
           </p>
           <div className="bg-gray-50 rounded-lg p-4 text-left">
-            <p className="text-sm font-medium text-gray-900 mb-2">Quick Setup:</p>
+            <p className="text-sm font-medium text-gray-900 mb-2">Cara Setup:</p>
             <ol className="text-sm text-gray-600 space-y-1">
-              <li>1. Install Ollama from <a href="https://ollama.ai" className="text-green-600 hover:underline" target="_blank" rel="noopener">ollama.ai</a></li>
-              <li>2. Run: <code className="bg-gray-200 px-1 rounded font-mono">ollama serve</code></li>
-              <li>3. Download a model: <code className="bg-gray-200 px-1 rounded font-mono">ollama pull llama2</code></li>
+              <li>1. Daftar gratis di <a href="https://console.groq.com" className="text-green-600 hover:underline" target="_blank" rel="noopener">console.groq.com</a></li>
+              <li>2. Buat API key di dashboard</li>
+              <li>3. Tambahkan ke file .env: <code className="bg-gray-200 px-1 rounded font-mono">VITE_GROQ_API_KEY=your_key</code></li>
             </ol>
           </div>
         </div>
@@ -38,18 +38,10 @@ export const EmptyState: React.FC<EmptyStateProps> = ({ isConnected, hasModels }
           <div className="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-6">
             <Cpu className="h-8 w-8 text-orange-500" />
           </div>
-          <h3 className="text-xl font-semibold text-gray-900 mb-3">No Models Available</h3>
+          <h3 className="text-xl font-semibold text-gray-900 mb-3">Loading Models...</h3>
           <p className="text-gray-600 mb-6">
-            Download an AI model to start chatting
+            Sedang memuat model AI yang tersedia...
           </p>
-          <div className="bg-gray-50 rounded-lg p-4 text-left">
-            <p className="text-sm font-medium text-gray-900 mb-2">Popular models:</p>
-            <div className="text-sm text-gray-600 space-y-1">
-              <div><code className="bg-gray-200 px-1 rounded font-mono">ollama pull llama2</code> - General purpose</div>
-              <div><code className="bg-gray-200 px-1 rounded font-mono">ollama pull codellama</code> - Code assistant</div>
-              <div><code className="bg-gray-200 px-1 rounded font-mono">ollama pull mistral</code> - Fast model</div>
-            </div>
-          </div>
         </div>
       </div>
     );
@@ -63,7 +55,7 @@ export const EmptyState: React.FC<EmptyStateProps> = ({ isConnected, hasModels }
         </div>
         <h2 className="text-3xl font-bold text-gray-900 mb-4">Welcome to Kerokero AI</h2>
         <p className="text-lg text-gray-600 mb-8">
-          Your personal AI assistant powered by Ollama. Start a conversation below.
+          Your personal AI assistant powered by Groq API. Start a conversation below.
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
@@ -71,16 +63,16 @@ export const EmptyState: React.FC<EmptyStateProps> = ({ isConnected, hasModels }
             <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
               <Shield className="h-6 w-6 text-green-600" />
             </div>
-            <h3 className="font-semibold text-gray-900 mb-2">Private & Secure</h3>
-            <p className="text-sm text-gray-600">Your conversations stay on your device</p>
+            <h3 className="font-semibold text-gray-900 mb-2">Fast & Reliable</h3>
+            <p className="text-sm text-gray-600">Powered by Groq's lightning-fast API</p>
           </div>
           
           <div className="bg-white border border-gray-200 rounded-xl p-6 text-center">
             <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
               <Zap className="h-6 w-6 text-blue-600" />
             </div>
-            <h3 className="font-semibold text-gray-900 mb-2">Fast & Responsive</h3>
-            <p className="text-sm text-gray-600">No internet required for conversations</p>
+            <h3 className="font-semibold text-gray-900 mb-2">Works Everywhere</h3>
+            <p className="text-sm text-gray-600">Access from any device with internet</p>
           </div>
           
           <div className="bg-white border border-gray-200 rounded-xl p-6 text-center">
@@ -88,7 +80,7 @@ export const EmptyState: React.FC<EmptyStateProps> = ({ isConnected, hasModels }
               <Cpu className="h-6 w-6 text-purple-600" />
             </div>
             <h3 className="font-semibold text-gray-900 mb-2">Multiple Models</h3>
-            <p className="text-sm text-gray-600">Choose the right AI for your needs</p>
+            <p className="text-sm text-gray-600">Llama 3, Mixtral, Gemma and more</p>
           </div>
         </div>
         

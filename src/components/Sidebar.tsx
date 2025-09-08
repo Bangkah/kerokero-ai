@@ -1,12 +1,12 @@
 import React from 'react';
 import { Plus, MessageSquare, Settings, User, Github, ExternalLink } from 'lucide-react';
-import { OllamaModel } from '../types/chat';
+import { AIModel } from '../types/chat';
 
 interface SidebarProps {
   isOpen: boolean;
   onClose: () => void;
   onNewChat: () => void;
-  models: OllamaModel[];
+  models: AIModel[];
   selectedModel: string;
   onModelChange: (model: string) => void;
   isConnected: boolean;
@@ -68,7 +68,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             >
               <option value="">Select Model</option>
               {models.map((model) => (
-                <option key={model.name} value={model.name}>
+                <option key={model.id} value={model.id}>
                   {model.name}
                 </option>
               ))}
@@ -76,7 +76,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             <div className="flex items-center mt-2 text-xs">
               <div className={`w-2 h-2 rounded-full mr-2 ${isConnected ? 'bg-green-500' : 'bg-red-500'}`} />
               <span className={isConnected ? 'text-green-400' : 'text-red-400'}>
-                {isConnected ? 'Connected' : 'Disconnected'}
+                {isConnected ? 'Connected to Groq' : 'Disconnected'}
               </span>
             </div>
           </div>

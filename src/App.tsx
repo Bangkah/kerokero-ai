@@ -5,7 +5,7 @@ import { MessageBubble } from './components/MessageBubble';
 import { ChatInput } from './components/ChatInput';
 import { TypingIndicator } from './components/TypingIndicator';
 import { EmptyState } from './components/EmptyState';
-import { useOllama } from './hooks/useOllama';
+import { useGroqAPI } from './hooks/useGroqAPI';
 import { Message } from './types/chat';
 import { AlertTriangle } from 'lucide-react';
 
@@ -23,7 +23,7 @@ function App() {
   const [selectedModel, setSelectedModel] = useState('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
-  const { models, isLoading, error, isConnected, sendMessage } = useOllama();
+  const { models, isLoading, error, isConnected, sendMessage } = useGroqAPI();
 
   const currentConversation = conversations.find(c => c.id === currentConversationId);
   const messages = currentConversation?.messages || [];
@@ -38,7 +38,7 @@ function App() {
 
   useEffect(() => {
     if (models.length > 0 && !selectedModel) {
-      setSelectedModel(models[0].name);
+      setSelectedModel(models[0].id);
     }
   }, [models, selectedModel]);
 
