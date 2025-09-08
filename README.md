@@ -193,7 +193,7 @@ The built files in `dist/` can be deployed to any static hosting service:
 - **RAM Usage**: Models require significant RAM (4-8GB per model)
 - **CPU**: Modern multi-core processors recommended
 - **Storage**: Models range from 2-20GB each
-- **GPU**: NVIDIA GPUs can accelerate inference (optional)
+- **GPU**: NVIDIA GPUs can accelerate inference (optional). 
 
 ## 🤝 Contributing
 
